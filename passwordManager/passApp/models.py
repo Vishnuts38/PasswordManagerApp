@@ -17,12 +17,18 @@ class PasswordShare(models.Model):
     shared_with = models.ForeignKey(User, on_delete=models.CASCADE)
     password_item = models.ForeignKey(PasswordItem, on_delete=models.CASCADE)
     access_type = models.CharField(max_length=10, choices=[('view', 'View'), ('edit', 'Edit')])
+    
+    
+    def __str__(self):
+        return self.access_type
 
 class Organisation(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     password_org = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
 
 
 
